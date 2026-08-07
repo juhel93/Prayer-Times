@@ -257,12 +257,24 @@ Rules:
       try {
         parsed = JSON.parse(clean);
       } catch {
+        const firstBrace = clean.indexOf('{');
+        const lastBrace = clean.lastIndexOf('}');
+        if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+          try {
+            parsed = JSON.parse(clean.slice(firstBrace, lastBrace + 1));
+          } catch {
+            parsed = null;
+          }
+        }
+      }
+      if (!parsed) {
         throw new Error(
           isPdf
             ? "Couldn't fully read that PDF — a full year in one file can be a lot to process at once. Try splitting it into a few smaller PDFs (e.g. one per quarter) and uploading those instead."
             : "Couldn't make sense of the timetable in that photo. Try a clearer, well-lit shot."
         );
       }
+
 
       const extracted = (parsed.schedules || []).map((s) => {
         const row = {
