@@ -38,7 +38,8 @@ function isRateLimited(ip) {
 // tables and a free-tier limit of roughly 250 requests/day. If you expect
 // heavier traffic, switch to "gemini-2.5-flash-lite" for a higher free
 // daily cap (~1000/day) at a slight accuracy tradeoff.
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.1-flash-lite';
+
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
