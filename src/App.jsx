@@ -581,7 +581,11 @@ Rules:
               Download reminders (.ics)
             </button>
             <div style={{ fontSize: 12, color: '#6B7396', marginTop: 8, marginBottom: 16, textAlign: 'center', lineHeight: 1.5 }}>
+                            {preview.count} reminder{preview.count === 1 ? '' : 's'} ready{preview.skipped ? ` (${preview.skipped} undated row${preview.skipped === 1 ? '' : 's'} skipped)` : ''}.
+            </div>
+            <div style={{ fontSize: 12, color: '#6B7396', marginBottom: 16, textAlign: 'center', lineHeight: 1.5 }}>
               One file, one reminder per prayer per day. Works in any Calendar or Reminders app — no Claude needed. Anyone can use this.
+
             </div>
             {icsMsg && (
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, background: '#1B2242', border: '1px solid #3A4468', color: '#C6CBE0', borderRadius: 10, padding: '10px 14px', fontSize: 13, marginBottom: 16 }}>
