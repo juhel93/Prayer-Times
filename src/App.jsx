@@ -159,8 +159,11 @@ export default function PrayerTimesApp() {
   const [reminderMode, setReminderMode] = useState('jamaat');
   const fileInputRef = useRef(null);
 
+  const preview = useMemo(() => generateICS(schedules, reminderMode), [schedules, reminderMode]);
+
   const downloadICS = () => {
     const { ics, count, skipped } = generateICS(schedules, reminderMode);
+
     if (count === 0) {
       setIcsMsg('No dated entries to export \u2014 rows without a real date are skipped.');
       return;
