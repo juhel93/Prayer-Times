@@ -4,7 +4,9 @@ import { Camera, Upload, Trash2, Plus, Copy, Check, Loader2, Moon, Sun, Sunset, 
 const PRAYER_ORDER = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
 const PRAYER_LABELS = { fajr: 'Fajr', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha' };
 const PRAYER_ICONS = { fajr: Moon, dhuhr: Sun, asr: Sun, maghrib: Sunset, isha: Moon };
-
+function isValidTime(t) {
+  return /^\d{1,2}:\d{2}\s*(AM|PM|am|pm)$/.test(t.trim()) && parseTimeToMinutes(t) !== null;
+}
 function parseTimeToMinutes(t) {
   if (!t) return null;
   const m = t.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM|am|pm)?$/);
@@ -519,8 +521,9 @@ Rules:
                               value={s[p].start}
                               placeholder="start"
                               onChange={(e) => updateCell(s.date, p, 'start', e.target.value)}
-                              style={s[p].start && parseTimeToMinutes(s[p].start) === null ? { ...inputStyle, outline: '1.5px solid #E05C6E', borderRadius: 4 } : inputStyle}
-                              title={s[p].start && parseTimeToMinutes(s[p].start) === null ? 'Not a recognized time — try "5:30 PM"' : undefined}
+                              style={s[p].start && !isValidTime(s[p].start) ? { ...inputStyle, outline: '1.5px solid #E05C6E', borderRadius: 4 } : inputStyle}
+                              title={s[p].start && !isValidTime(s[p].start) ? 'Include AM or PM — e.g. "5:30 PM"' : undefined}
+
                             />
                             {showJamaat && (
                               <input
@@ -528,8 +531,9 @@ Rules:
                                 value={s[p].jamaat}
                                 placeholder="jamaat"
                                 onChange={(e) => updateCell(s.date, p, 'jamaat', e.target.value)}
-                                style={s[p].jamaat && parseTimeToMinutes(s[p].jamaat) === null ? { ...inputStyle, color: '#D4A657', outline: '1.5px solid #E05C6E', borderRadius: 4 } : { ...inputStyle, color: '#D4A657' }}
-                                title={s[p].jamaat && parseTimeToMinutes(s[p].jamaat) === null ? 'Not a recognized time — try "5:30 PM"' : undefined}
+                                style={s[p].jamaat && !isValidTime(s[p].jamaat) ? { ...inputStyle, color: '#D4A657', outline: '1.5px solid #E05C6E', borderRadius: 4 } : { ...inputStyle, color: '#D4A657' }}
+                                title={s[p].jamaat && !isValidTime(s[p].jamaat) ? 'Include AM or PM — e.g. "5:30 PM"' : undefined}
+
                               />
                             )}
 
