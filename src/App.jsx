@@ -514,12 +514,13 @@ Rules:
                       {PRAYER_ORDER.map((p) => (
                         <td key={p} style={tdStyle}>
                           <div style={{ display: 'flex', gap: 6 }}>
-                            <input
+                                                        <input
                               type="text"
                               value={s[p].start}
                               placeholder="start"
                               onChange={(e) => updateCell(s.date, p, 'start', e.target.value)}
-                              style={inputStyle}
+                              style={s[p].start && parseTimeToMinutes(s[p].start) === null ? { ...inputStyle, outline: '1.5px solid #E05C6E', borderRadius: 4 } : inputStyle}
+                              title={s[p].start && parseTimeToMinutes(s[p].start) === null ? 'Not a recognized time — try "5:30 PM"' : undefined}
                             />
                             {showJamaat && (
                               <input
@@ -527,9 +528,11 @@ Rules:
                                 value={s[p].jamaat}
                                 placeholder="jamaat"
                                 onChange={(e) => updateCell(s.date, p, 'jamaat', e.target.value)}
-                                style={{ ...inputStyle, color: '#D4A657' }}
+                                style={s[p].jamaat && parseTimeToMinutes(s[p].jamaat) === null ? { ...inputStyle, color: '#D4A657', outline: '1.5px solid #E05C6E', borderRadius: 4 } : { ...inputStyle, color: '#D4A657' }}
+                                title={s[p].jamaat && parseTimeToMinutes(s[p].jamaat) === null ? 'Not a recognized time — try "5:30 PM"' : undefined}
                               />
                             )}
+
                           </div>
                         </td>
                       ))}
