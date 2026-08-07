@@ -112,7 +112,7 @@ function generateICS(schedules, mode) {
       const mins = parseTimeToMinutes(timeStr);
       if (mins === null) return;
 
-      const label = mode === 'jamaat' && p === 'dhuhr' && isFriday ? "Jumu'ah" : PRAYER_LABELS[p];
+      const label = p === 'dhuhr' && isFriday ? "Jumu'ah" : PRAYER_LABELS[p];
       const t24 = to24(mins);
       const startH = pad2(Math.floor(mins / 60));
       const startM = pad2(mins % 60);
