@@ -78,7 +78,8 @@ export default async function handler(req, res) {
             },
           ],
           generationConfig: {
-            maxOutputTokens: mediaType === 'application/pdf' ? 8000 : 4000,
+            maxOutputTokens: mediaType === 'application/pdf' ? 10000 : 6000,
+
           },
         }),
       }
