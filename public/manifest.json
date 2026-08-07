@@ -1,0 +1,23 @@
+{
+  "name": "Prayer Times",
+  "short_name": "Prayer Times",
+  "description": "Photograph a mosque timetable and get prayer reminders for your phone.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#12172B",
+  "theme_color": "#12172B",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%2312172B'/%3E%3Ccircle cx='96' cy='96' r='58' fill='none' stroke='%23D4A657' stroke-width='6'/%3E%3Cpath d='M96 40 A58 58 0 0 1 96 152 A46 46 0 0 0 96 40Z' fill='%23D4A657'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%2312172B'/%3E%3Ccircle cx='96' cy='96' r='58' fill='none' stroke='%23D4A657' stroke-width='6'/%3E%3Cpath d='M96 40 A58 58 0 0 1 96 152 A46 46 0 0 0 96 40Z' fill='%23D4A657'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
