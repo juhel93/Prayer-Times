@@ -461,11 +461,21 @@ Rules:
                   <input type="checkbox" checked={showJamaat} onChange={(e) => setShowJamaat(e.target.checked)} />
                   Show jamaat times
                 </label>
-                <button
+                                <button
                   onClick={addManualRow}
                   style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'none', border: '1px solid #3A4468', color: '#C6CBE0', borderRadius: 8, padding: '6px 10px', fontSize: 12.5, cursor: 'pointer' }}
                 >
                   <Plus size={13} /> Add day
+                </button>
+                <button
+                  onClick={() => {
+                    if (window.confirm('Clear all saved days? This can\'t be undone.')) {
+                      setSchedules([]);
+                    }
+                  }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'none', border: '1px solid #6B3241', color: '#F0B8C2', borderRadius: 8, padding: '6px 10px', fontSize: 12.5, cursor: 'pointer' }}
+                >
+                  <Trash2 size={13} /> Clear all
                 </button>
               </div>
             </div>
